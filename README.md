@@ -6,3 +6,6 @@ This repository contains the verilog implementation of Asynchronous FIFO
 
 ### Gray counter: 
 ![Alt Text](assets/fifo_graycounter.png)
+
+### Synchronizers for afull_n/aalmost_full_n and aempty_n/aempty_full_n signals: 
+![Alt Text](assets/fifo_synchronizers.png)
