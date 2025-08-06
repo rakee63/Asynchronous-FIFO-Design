@@ -82,17 +82,31 @@ module tb_top_module();
 //            #20;
 //        end
 
-//        // TEST CASE 4: Write 2 data and read 1 data
-         for (i = 0; i < 20; i = i + 1) begin
-             wdata = $random(seed) % 256;
-             winc = 1;
-             #10;
-             wdata = $random(seed) % 256;
-             #10;
-             winc=0; rinc=1;
-             #20
-             rinc=0;
-         end
+        // TEST CASE 4: Write 2 data and read 1 data
+         // for (i = 0; i < 20; i = i + 1) begin
+         //     wdata = $random(seed) % 256;
+         //     winc = 1;
+         //     #10;
+         //     wdata = $random(seed) % 256;
+         //     #10;
+         //     winc=0; rinc=1;
+         //     #20
+         //     rinc=0;
+         // end
+
+        // TEST CASE 5: Write until fifo become full and then read until fifo become empty
+        rinc = 0;
+        winc = 1;
+        for (i = 0; i < DEPTH + 4; i = i + 1) begin
+            wdata = $random(seed) % 256;
+            #10;
+        end
+        winc = 0;
+        #30
+        rinc = 1;
+        for (i = 0; i < DEPTH + 3; i = i + 1) begin
+            #20;
+        end
 
         $stop;
     end
